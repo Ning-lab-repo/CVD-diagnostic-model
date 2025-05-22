@@ -110,7 +110,7 @@ for idx, metabolite_column in enumerate(metabolite_columns):
         whiskers = bplot['whiskers'][2 * i + 1].get_ydata()  
         cap = bplot['caps'][2 * i + 1].get_ydata()[1] 
       
-        marker_y = cap + 0.000001 * (ax.get_ylim()[1] - ax.get_ylim()[0])  # 顶部位置 + 微小偏移
+        marker_y = cap + 0.000001 * (ax.get_ylim()[1] - ax.get_ylim()[0])  
         if p_value < 0.001:
             ax.text(i + 1, marker_y, '***', horizontalalignment='center', fontsize=8, color='black')
         elif p_value < 0.01:
