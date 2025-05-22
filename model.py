@@ -43,7 +43,34 @@ def process_cvd(cvd, n_threads):
         y = data['diagnosis_cvd_id_list'].apply(lambda codes: int(any(code == cvd for code in codes)))
   
     
-    model = LogisticRegression(C=0.1, penalty='l2', solver='lbfgs', class_weight='balanced', max_iter=10000, random_state=42)
+  #  model = LogisticRegression(C=0.1, penalty='l2', solver='lbfgs', class_weight='balanced', max_iter=10000, random_state=42)
+     #   model = XGBClassifier(
+      #  n_estimators=400,
+     #   max_depth=3,
+    #    learning_rate=0.01,
+     #   scale_pos_weight=y.value_counts()[0] / y.value_counts()[1],
+     #   max_delta_step=1,
+     #   subsample=0.7,
+     #   colsample_bytree=0.7,
+     #   min_child_weight=3,
+     #   gamma=0.1,
+      #  reg_alpha=0.5,
+     #   reg_lambda=2.0,
+      #  random_state=42,
+     #   n_jobs=-1,
+     #   objective='binary:logistic',
+      #  use_label_encoder=False,
+       # eval_metric='auc'
+  #  )
+  #  model = RandomForestClassifier(
+  #  n_estimators=500,           
+   # max_depth=20,                
+  #  min_samples_split=30,        
+  #  min_samples_leaf=10,          
+  #  class_weight='balanced',    
+  #  random_state=42,
+  #  n_jobs=n_threads                   
+   # )
     
     cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
     y_pred_prob = np.zeros(len(y), dtype=float)
