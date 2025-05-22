@@ -43,7 +43,7 @@ def process_cvd(cvd, n_threads):
         y = data['diagnosis_cvd_id_list'].apply(lambda codes: int(any(code == cvd for code in codes)))
   
     
-  #  model = LogisticRegression(C=0.1, penalty='l2', solver='lbfgs', class_weight='balanced', max_iter=10000, random_state=42)
+    model = LogisticRegression(C=0.1, penalty='l2', solver='lbfgs', class_weight='balanced', max_iter=10000, random_state=42)
      #   model = XGBClassifier(
       #  n_estimators=400,
      #   max_depth=3,
