@@ -1,3 +1,22 @@
+  This study maps the metabolomic landscape of cardiovascular disease (CVD) in the UK Biobank to understand shared versus disease‑specific biology and to prioritise robust cross‑CVD biomarkers. Using 244,567 participants with 325 Nightingale NMR biomarkers and rich clinical data, we defined CVD classes/subclasses by ICD‑10, performed leakage‑free preprocessing (fold‑wise imputation/standardisation), addressed imbalance with SMOTE and class weighting, and trained nested‑CV models (logistic regression, random forest, XGBoost) to quantify metabolomic distinctiveness (AUC) rather than build diagnostic tools. We interpreted models with SHAP to stabilise key features and built a diagnosis‑independent disease similarity space that combines overlap of significantly shifted metabolites and rank concordance of mean Z‑profiles. Sensitivity analyses (statin adjustment) and external validation in Scotland/Wales confirmed the robustness and generalisability of patterns. Results highlight pronounced, reproducible signatures for ischaemic and hypertensive–renal entities and a lipid/fatty‑acid–centred signal (IDL/LDL fractions, LA metrics) with complementary glycaemic, renal, hepatic, and inflammatory markers; a compact cross‑CVD metabolite panel recapitulates much of the separation across diseases. Overall, the work delivers an empirical atlas of CVD metabolomic heterogeneity, prioritises stable cross‑CVD biomarkers, and provides a reproducible framework and codebase to guide mechanistic follow‑up and future translational studies.
+
+Data structure:
+Required columns:
+Participant identifier: Participant ID
+CVD labels
+Feature matrix: 325 NMR features + 66 clinical features
+cvd_id_list contains ICD-10 codes. 
+Train cohort filter:
+Only England assessment centers are kept:  [11012, 11021, 11011, 11008, 11009,11024, 11020, 11018, 11010, 11016, 11001, 11017, 11013, 11002, 11007, 11014, 10003, 11006, 11025, 11026, 11027, 11028].
+
+How the script runs (pipeline):
+5-fold Stratified CV:
+Within each fold it fits a SimpleImputer(median) and StandardScaler only on the training fold (no leakage) and applies to the validation fold.
+Trains an XGBClassifier with class imbalance handling via scale_pos_weight = Nneg/Npos in that fold.
+Collects out-of-fold predicted probabilities for all subjects to compute CV ROC/AUC and F1 (threshold 0.5 for this quick metric).
+
+
+
 # box plot.py  
 Compare the differences in metabolite distribution between different cardiovascular disease (CVD) subtypes and the non-CVD group, draw box plots and conduct statistical tests (Mann-Whitney U test), and perform FDR correction for multiple test results. Finally, save the box plots as PDF files.
 
