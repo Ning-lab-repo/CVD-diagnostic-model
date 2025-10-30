@@ -10,7 +10,7 @@ xgboost==2.1.4
 joblib==1.5.1
 
 
-R
+R：
 dplyr==1.1.4
 ggplot2==4.0.0
 highcharter==0.9.4
