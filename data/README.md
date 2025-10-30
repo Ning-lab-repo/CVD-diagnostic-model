@@ -1,6 +1,6 @@
 UK Biobank NMR Metabolic Biomarkers (325 variables) — Data Source
 
-Source
+Source：
 Ritchie SC, Surendran P, Karthikeyan S, et al. Quality control and removal of technical variation of NMR metabolic biomarker data in ~120,000 UK Biobank participants. Scientific Data. 2023;10:64. doi:10.1038/s41597-023-01949-y.
 
 The original Nightingale Health NMR release contains 249 variables:
